@@ -1,11 +1,11 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:eslatma/pages/calender_page.dart';
+import 'package:eslatma/pages/default_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import '../themes/app_theme.dart';
-import '../themes/custom_colors_theme.dart';
-import '../widgets/navigation_screen.dart';
+import 'add_page.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -28,8 +28,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late CurvedAnimation borderRadiusCurve;
   late AnimationController _hideBottomBarAnimationController;
 
+  final List<Widget> _pages = [
+    const CalenderPage(),
+    const DefaultPage(),
+    const AddPage(),
+  ];
+
   final iconList = <IconData>[
-    Icons.calendar_month_rounded,
+    Icons.edit_calendar_outlined,
     Icons.account_circle_outlined,
   ];
 
@@ -38,20 +44,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     super.initState();
 
     _fabAnimationController = AnimationController(
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       vsync: this,
     );
     _borderRadiusAnimationController = AnimationController(
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       vsync: this,
     );
     fabCurve = CurvedAnimation(
       parent: _fabAnimationController,
-      curve: Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
+      curve: const Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
     );
     borderRadiusCurve = CurvedAnimation(
       parent: _borderRadiusAnimationController,
-      curve: Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
+      curve: const Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
     );
 
     fabAnimation = Tween<double>(begin: 0, end: 1).animate(fabCurve);
@@ -95,25 +101,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).extension<CustomColorsTheme>()!;
     return Scaffold(
       extendBody: true,
-      appBar: AppBar(
-        title: const Text(
-          "ssssss",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-      body: NotificationListener<ScrollNotification>(
-        onNotification: onScrollNotification,
-        child: NavigationScreen(iconList[_bottomNavIndex]),
-      ),
+      body: _pages[_bottomNavIndex],
       floatingActionButton: FloatingActionButton(
-        child: Icon(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+        ),
+        backgroundColor: Colors.deepPurpleAccent,
+        child: const Icon(
           Icons.add,
-          color: AppTheme.colorGray,
+          size: 36,
+          color: Colors.white,
         ),
         onPressed: () {
+          setState(() {
+            _bottomNavIndex = 2; // Go to Add page
+          });
           _fabAnimationController.reset();
           _borderRadiusAnimationController.reset();
           _borderRadiusAnimationController.forward();
@@ -125,23 +129,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         itemCount: iconList.length,
         tabBuilder: (int index, bool isActive) {
           final color = isActive
-              ? colors.activeNavigationBarColor
-              : colors.notActiveNavigationBarColor;
+              ? Colors.deepPurpleAccent
+              : Colors.black54;
           return Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
                 iconList[index],
-                size: 24,
+                size: 36,
                 color: color,
               ),
             ],
           );
         },
-        backgroundColor: colors.bottomNavigationBarBackgroundColor,
+        backgroundColor: Colors.white,
         activeIndex: _bottomNavIndex,
-        splashColor: colors.activeNavigationBarColor,
+        splashColor: Colors.deepPurpleAccent,
         notchAndCornersAnimation: borderRadiusAnimation,
         splashSpeedInMilliseconds: 300,
         notchSmoothness: NotchSmoothness.defaultEdge,
@@ -150,12 +154,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         rightCornerRadius: 32,
         onTap: (index) => setState(() => _bottomNavIndex = index),
         hideAnimationController: _hideBottomBarAnimationController,
-        shadow: BoxShadow(
-          offset: Offset(0, 1),
-          blurRadius: 12,
-          spreadRadius: 0.5,
-          color: colors.activeNavigationBarColor,
-        ),
       ),
     );
   }
