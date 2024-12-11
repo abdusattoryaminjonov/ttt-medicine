@@ -20,6 +20,14 @@ dependencies:
   flutter_slidable: ^3.1.1
   flutter_advanced_switch: ^3.1.0
   intl: ^0.18.0
+#  persistent_bottom_nav_bar: ^5.0.2
+  group_button: ^5.3.4
+  time_pickerr: ^1.0.6
+
+  # GetX
+  get: ^4.6.6
+  get_storage: ^2.1.1
+  path_provider: ^2.1.4
 
 dev_dependencies:
   flutter_test:
