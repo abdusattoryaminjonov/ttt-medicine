@@ -1,3 +1,4 @@
+import 'package:eslatma/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:group_button/group_button.dart';
@@ -84,7 +85,7 @@ class _AddPageState extends State<AddPage> {
             child: ClipPath(
               clipper: WaveClipper(),
               child: Container(
-                color: Colors.deepPurpleAccent,
+                color: AppColors.appActiveColor,
               ),
             ),
           ),
@@ -96,7 +97,7 @@ class _AddPageState extends State<AddPage> {
                   Container(
                     padding: const EdgeInsets.only(left: 20,top: 10),
                     height: 150,
-                    child: const Column(
+                    child:  Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -104,12 +105,12 @@ class _AddPageState extends State<AddPage> {
                           fontFamily: 'Roboto',
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
-                          color: Colors.white,
+                          color: AppColors.white100,
                         ),),
                         Text("for health",style:TextStyle(
                           fontSize: 10,
                           fontFamily: 'Roboto',
-                          color: Colors.white,
+                          color: AppColors.white100,
                         ),),
                       ],
                     ),
@@ -125,11 +126,11 @@ class _AddPageState extends State<AddPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                 Text(
                                   "Dori nomi",
                                   style: TextStyle(
                                     fontSize: 15,
-                                    color: Colors.deepPurpleAccent,
+                                    color: AppColors.appActiveColor,
                                   ),
                                 ),
                                 Container(
@@ -139,20 +140,20 @@ class _AddPageState extends State<AddPage> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(21),
                                     border: Border.all(
-                                        color: Colors.deepPurpleAccent,
+                                        color: AppColors.appActiveColor,
                                         width: 1),
                                   ),
-                                  child: const TextField(
+                                  child:  TextField(
                                     // controller:loginController.emailController,
                                     style: TextStyle(
-                                      color: Colors.black,),
+                                      color: AppColors.black,),
                                     textAlign: TextAlign.start,
                                     decoration: InputDecoration(
                                         hintText: "nomi",
                                         border: InputBorder.none,
                                         hintStyle: TextStyle(
                                             fontSize: 15,
-                                            color: Colors.black54)),
+                                            color: AppColors.black)),
                                   ),
                                 ),
                               ],
@@ -164,11 +165,11 @@ class _AddPageState extends State<AddPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text(
+                                     Text(
                                       "Umumiy son",
                                       style: TextStyle(
                                         fontSize: 15,
-                                        color: Colors.deepPurpleAccent,
+                                        color: AppColors.appActiveColor,
                                       ),
                                     ),
                                     Container(
@@ -178,21 +179,21 @@ class _AddPageState extends State<AddPage> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(21),
                                         border: Border.all(
-                                            color: Colors.deepPurpleAccent,
+                                            color: AppColors.appActiveColor,
                                             width: 1),
                                       ),
-                                      child: const TextField(
+                                      child:  TextField(
                                         // controller:loginController.emailController,
                                         keyboardType: TextInputType.number,
                                         style: TextStyle(
-                                          color: Colors.black,),
+                                          color: AppColors.black,),
                                         textAlign: TextAlign.start,
                                         decoration: InputDecoration(
                                             hintText: "soni",
                                             border: InputBorder.none,
                                             hintStyle: TextStyle(
                                                 fontSize: 15,
-                                                color: Colors.black54)),
+                                                color: AppColors.black)),
                                       ),
                                     ),
                                   ],
@@ -203,11 +204,11 @@ class _AddPageState extends State<AddPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text(
+                                     Text(
                                       "Kunlik son",
                                       style: TextStyle(
                                         fontSize: 15,
-                                        color: Colors.deepPurpleAccent,
+                                        color: AppColors.appActiveColor,
                                       ),
                                     ),
                                     Container(
@@ -217,21 +218,21 @@ class _AddPageState extends State<AddPage> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(21),
                                         border: Border.all(
-                                            color: Colors.deepPurpleAccent,
+                                            color: AppColors.appActiveColor,
                                             width: 1),
                                       ),
-                                      child: const TextField(
+                                      child: TextField(
                                         // controller:loginController.emailController,
                                         keyboardType: TextInputType.number,
                                         style: TextStyle(
-                                          color: Colors.black,),
+                                          color: AppColors.black,),
                                         textAlign: TextAlign.start,
                                         decoration: InputDecoration(
                                             hintText: "soni",
                                             border: InputBorder.none,
                                             hintStyle: TextStyle(
                                                 fontSize: 15,
-                                                color: Colors.black54)),
+                                                color: AppColors.black)),
                                       ),
                                     ),
                                   ],
@@ -247,11 +248,11 @@ class _AddPageState extends State<AddPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text(
+                                    Text(
                                       "Qabul qilish kuni(boshlash)",
                                       style: TextStyle(
                                         fontSize: 15,
-                                        color: Colors.deepPurpleAccent,
+                                        color: AppColors.appActiveColor,
                                       ),
                                     ),
                                     Container(
@@ -260,7 +261,7 @@ class _AddPageState extends State<AddPage> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(21),
                                         border: Border.all(
-                                            color: Colors.deepPurpleAccent,
+                                            color: AppColors.appActiveColor,
                                             width: 1),
                                       ),
                                       child: Row(
@@ -269,19 +270,19 @@ class _AddPageState extends State<AddPage> {
                                           Expanded(
                                             child: TextField(
                                               controller: _dateController,
-                                              style: const TextStyle(color: Colors.black),
+                                              style: TextStyle(color: AppColors.black),
                                               textAlign: TextAlign.start,
-                                              decoration: const InputDecoration(
+                                              decoration:  InputDecoration(
                                                   hintText: 'mm/dd/yyyy',
                                                   border: InputBorder.none,
                                                   hintStyle: TextStyle(
-                                                      fontSize: 15, color: Colors.black54)),
+                                                      fontSize: 15, color: AppColors.black)),
                                               readOnly: true,
                                             ),
                                           ),
                                           GestureDetector(
                                             onTap: () => _selectDate(context),
-                                            child: Icon(Icons.date_range,color: Colors.black54,),
+                                            child: Icon(Icons.date_range,color: AppColors.black,),
                                           ),
 
                                         ],
@@ -295,11 +296,11 @@ class _AddPageState extends State<AddPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text(
+                                     Text(
                                       "Kun",
                                       style: TextStyle(
                                         fontSize: 15,
-                                        color: Colors.deepPurpleAccent,
+                                        color: AppColors.appActiveColor,
                                       ),
                                     ),
                                     Container(
@@ -307,7 +308,7 @@ class _AddPageState extends State<AddPage> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(21),
                                         border: Border.all(
-                                            color: Colors.deepPurpleAccent,
+                                            color: AppColors.appActiveColor,
                                             width: 1),
                                       ),
                                       child: SizedBox(
@@ -316,14 +317,14 @@ class _AddPageState extends State<AddPage> {
                                             border: InputBorder.none,
                                           ),
                                           value: dropdownValue,
-                                          icon: const Icon(
+                                          icon:  Icon(
                                             Icons.arrow_drop_down_outlined,
-                                            color: Colors.black54,
+                                            color: AppColors.black,
                                           ),
                                           iconSize: 24,
                                           elevation: 15,
-                                          style: const TextStyle(
-                                              color: Colors.black),
+                                          style:  TextStyle(
+                                              color: AppColors.black),
                                           onChanged: (String? newValue) {
                                             changeDay(newValue);
                                           },
@@ -343,6 +344,7 @@ class _AddPageState extends State<AddPage> {
                               ),
                             ],
                           ),
+                          const SizedBox(width: 15,),
                           GroupButton(
                             controller: _checkboxesController,
                             isRadio: false,

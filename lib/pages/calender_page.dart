@@ -1,3 +1,4 @@
+import 'package:eslatma/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -52,7 +53,7 @@ class _CalenderPageState extends State<CalenderPage>{
             child: ClipPath(
               clipper: WaveClipper(),
               child: Container(
-                color: Colors.deepPurpleAccent,
+                color: AppColors.appActiveColor,
               ),
             ),
           ),
@@ -131,7 +132,7 @@ class _CalenderPageState extends State<CalenderPage>{
                       children: [
                         Text(
                           DateFormat.yMMMM().format(selectedDate),
-                          style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold,color: Colors.deepPurpleAccent),
+                          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold,color: AppColors.appActiveColor),
                         ),
                         const SizedBox(height: 20),
                         Row(
@@ -143,7 +144,7 @@ class _CalenderPageState extends State<CalenderPage>{
                               alignment: Alignment.center,
                               child: Text(
                                 DateFormat('E', 'en_US').format(date),
-                                style: const TextStyle(fontSize: 14.0, color: Colors.deepPurpleAccent),
+                                style: TextStyle(fontSize: 14.0, color: AppColors.appActiveColor),
                               ),
                             ),
                           )
@@ -175,8 +176,8 @@ class _CalenderPageState extends State<CalenderPage>{
                                       onPressed: (BuildContext context) {
                                         // _deletePost(post);
                                       },
-                                      backgroundColor: Colors.green,
-                                      foregroundColor: Colors.white,
+                                      backgroundColor: AppColors.green,
+                                      foregroundColor: AppColors.white100,
                                       icon: Icons.check_circle,
                                       label: 'Take',
                                       borderRadius: const BorderRadius.only(
@@ -192,7 +193,7 @@ class _CalenderPageState extends State<CalenderPage>{
                                   height: 101,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),
-                                    color: Colors.white,
+                                    color: AppColors.white100,
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.black.withOpacity(0.2),  // Shadow color with some opacity
@@ -218,7 +219,7 @@ class _CalenderPageState extends State<CalenderPage>{
                                             ),),
                                             AdvancedSwitch(
                                               controller: _checkController,
-                                              activeColor: Colors.deepPurpleAccent,
+                                              activeColor: AppColors.appActiveColor,
                                             ),
                                           ],
                                         ),
@@ -226,18 +227,18 @@ class _CalenderPageState extends State<CalenderPage>{
                                           fontFamily: 'Roboto',
                                           fontSize: 18,
                                         ),),
-                                        const Row(
+                                        Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text("Before meal",style: TextStyle(
                                               fontFamily: 'Roboto',
                                               fontSize: 15,
-                                              color: Colors.black38
+                                              color: AppColors.black05,
                                             ),),
                                             Text("Everyday at 8:00 am",style: TextStyle(
                                               fontFamily: 'Roboto',
                                               fontSize: 15,
-                                              color: Colors.black
+                                                color: AppColors.black
                                             ),),
                                           ],
                                         )
@@ -257,8 +258,8 @@ class _CalenderPageState extends State<CalenderPage>{
                                       onPressed: (BuildContext context) {
                                         // _deletePost(post);
                                       },
-                                      backgroundColor: Colors.green,
-                                      foregroundColor: Colors.white,
+                                      backgroundColor: AppColors.green,
+                                      foregroundColor: AppColors.white100,
                                       icon: Icons.check_circle,
                                       label: 'Take',
                                       borderRadius: const BorderRadius.only(
@@ -274,7 +275,7 @@ class _CalenderPageState extends State<CalenderPage>{
                                   height: 101,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),
-                                    color: Colors.white,
+                                    color: AppColors.white100,
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.black.withOpacity(0.2),  // Shadow color with some opacity
@@ -300,7 +301,7 @@ class _CalenderPageState extends State<CalenderPage>{
                                             ),),
                                             AdvancedSwitch(
                                               controller: _checkController,
-                                              activeColor: Colors.deepPurpleAccent,
+                                              activeColor: AppColors.appActiveColor,
                                             ),
                                           ],
                                         ),
@@ -308,18 +309,18 @@ class _CalenderPageState extends State<CalenderPage>{
                                           fontFamily: 'Roboto',
                                           fontSize: 18,
                                         ),),
-                                        const Row(
+                                        Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text("Before meal",style: TextStyle(
                                                 fontFamily: 'Roboto',
                                                 fontSize: 15,
-                                                color: Colors.black38
+                                                color: AppColors.black05
                                             ),),
                                             Text("Everyday at 8:00 am",style: TextStyle(
                                                 fontFamily: 'Roboto',
                                                 fontSize: 15,
-                                                color: Colors.black
+                                                color:AppColors.black
                                             ),),
                                           ],
                                         )
@@ -334,6 +335,7 @@ class _CalenderPageState extends State<CalenderPage>{
                         ),
                       )
                   ),
+                  const SizedBox(height: 50,)
                 ],
               ),
             ),
@@ -352,7 +354,7 @@ class _CalenderPageState extends State<CalenderPage>{
           '${date.day}',
           style: TextStyle(
             fontSize: 16.0,
-            color: Colors.deepPurpleAccent,
+            color: AppColors.appActiveColor,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),

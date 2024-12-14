@@ -1,7 +1,8 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:eslatma/constants/app_colors.dart';
 import 'package:eslatma/pages/calender_page.dart';
-import 'package:eslatma/pages/default_page.dart';
+import 'package:eslatma/pages/account_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   final List<Widget> _pages = [
     const CalenderPage(),
-    const DefaultPage(),
+    const AccountPage.AccountPage(),
     const AddPage(),
   ];
 
@@ -102,17 +103,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       extendBody: true,
       body: _pages[_bottomNavIndex],
       floatingActionButton: FloatingActionButton(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),
         ),
-        backgroundColor: Colors.deepPurpleAccent,
-        child: const Icon(
+        backgroundColor: AppColors.appActiveColor,
+        child:  Icon(
           Icons.add,
           size: 36,
-          color: Colors.white,
+          color: AppColors.white100,
         ),
         onPressed: () {
           setState(() {
@@ -129,8 +131,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         itemCount: iconList.length,
         tabBuilder: (int index, bool isActive) {
           final color = isActive
-              ? Colors.deepPurpleAccent
-              : Colors.black54;
+              ? AppColors.appActiveColor
+              : AppColors.black50;
           return Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -143,9 +145,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ],
           );
         },
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white100,
         activeIndex: _bottomNavIndex,
-        splashColor: Colors.deepPurpleAccent,
+        splashColor: AppColors.appActiveColor,
         notchAndCornersAnimation: borderRadiusAnimation,
         splashSpeedInMilliseconds: 300,
         notchSmoothness: NotchSmoothness.defaultEdge,
