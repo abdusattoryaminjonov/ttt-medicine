@@ -1,12 +1,12 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:eslatma/constants/app_colors.dart';
-import 'package:eslatma/pages/calender_page.dart';
-import 'package:eslatma/pages/account_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../constants/app_colors.dart';
+import 'account_page.dart';
 import 'add_page.dart';
+import 'calender_page.dart';
 
 class HomePage extends StatefulWidget {
 

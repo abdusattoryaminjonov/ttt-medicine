@@ -1,6 +1,6 @@
-import 'package:eslatma/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/app_colors.dart';
 import '../widgets/clip_wawe.dart';
 
 class AccountPage extends StatefulWidget {

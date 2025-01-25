@@ -1,9 +1,9 @@
-import 'package:eslatma/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 
+import '../constants/app_colors.dart';
 import '../widgets/clip_wawe.dart';
 
 class CalenderPage extends StatefulWidget {
@@ -16,7 +16,8 @@ class CalenderPage extends StatefulWidget {
 class _CalenderPageState extends State<CalenderPage>{
 
   final _checkController = ValueNotifier<bool>(false);
-  DateTime selectedDate = DateTime.now();
+  late final List<DateTime> currentWeekDates;
+  final DateTime selectedDate = DateTime.now();
 
   bool _checked = false;
 
@@ -28,7 +29,7 @@ class _CalenderPageState extends State<CalenderPage>{
   @override
   void initState() {
     super.initState();
-
+    currentWeekDates = getCurrentWeekDates(selectedDate);
     _checkController.addListener(() {
       setState(() {
         if (_checkController.value) {
@@ -43,7 +44,8 @@ class _CalenderPageState extends State<CalenderPage>{
 
   @override
   Widget build(BuildContext context) {
-    final currentWeekDates = getCurrentWeekDates(selectedDate);
+    // final currentWeekDates = getCurrentWeekDates(selectedDate);
+
 
     return Scaffold(
       body: Stack(
@@ -134,23 +136,7 @@ class _CalenderPageState extends State<CalenderPage>{
                           DateFormat.yMMMM().format(selectedDate),
                           style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold,color: AppColors.appActiveColor),
                         ),
-                        const SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: currentWeekDates
-                              .map(
-                                (date) => Container(
-                              width: 40.0,
-                              alignment: Alignment.center,
-                              child: Text(
-                                DateFormat('E', 'en_US').format(date),
-                                style: TextStyle(fontSize: 14.0, color: AppColors.appActiveColor),
-                              ),
-                            ),
-                          )
-                              .toList(),
-                        ),
-                        const SizedBox(height: 16.0),
+                        const SizedBox(height: 5),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: currentWeekDates
@@ -344,20 +330,35 @@ class _CalenderPageState extends State<CalenderPage>{
       ),
     );
   }
+
   Widget _buildCalendarDay(DateTime date, {required DateTime selectedDate}) {
-    final isSelected = date.day == selectedDate.day;
-    return SizedBox(
-      width: 40.0,
-      height: 40.0,
-      child: Center(
-        child: Text(
-          '${date.day}',
-          style: TextStyle(
-            fontSize: 16.0,
-            color: AppColors.appActiveColor,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+    bool isToday = DateFormat('yyyy-MM-dd').format(date) ==
+        DateFormat('yyyy-MM-dd').format(DateTime.now());
+
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        shape: BoxShape.rectangle,
+        color: isToday ? AppColors.appActiveColor : Colors.transparent,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Column(
+        children: [
+          Text(
+            DateFormat.E().format(date), // Haftaning kuni (e.g., Mon, Tue)
+            style: TextStyle(
+              color: isToday ? AppColors.white100 : AppColors.appActiveColor, // Matn rangi
+            ),
           ),
-        ),
+          const SizedBox(height: 15),
+          Text(
+            date.day.toString(), // Oy kunining raqami
+            style: TextStyle(
+              color: isToday ? AppColors.white100 : AppColors.appActiveColor, // Matn rangi
+              fontWeight: isToday ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
+        ],
       ),
     );
   }

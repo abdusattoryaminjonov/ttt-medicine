@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "593496349659",
+    "project_id": "medicine-b7dbe",
+    "storage_bucket": "medicine-b7dbe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593496349659:android:4d3711fc791c186fc4a5fe",
+        "android_client_info": {
+          "package_name": "com.example.eslatma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593496349659-o1emub8pjeu6bm5d8pt7n39i3qio4e24.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eslatma",
+            "certificate_hash": "8316348bdfee185f2691ec529ea8ee6518abaa18"
+          }
+        },
+        {
+          "client_id": "593496349659-ulja7gpd3f2ph415e3il2poa1q0pgdom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9uXrxAE79aaLsbL27lNCodFhsa5WVnxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593496349659-ulja7gpd3f2ph415e3il2poa1q0pgdom.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

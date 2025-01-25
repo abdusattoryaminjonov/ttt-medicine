@@ -1,9 +1,25 @@
-import 'package:eslatma/pages/home_page.dart';
-import 'package:eslatma/pages/splash_page.dart';
+import 'package:TTTMedicine/pages/splash_page.dart';
+import 'package:TTTMedicine/services/root_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+FlutterLocalNotificationsPlugin();
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()!
+      .requestNotificationsPermission();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) async {
+    await RootService.init();
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
