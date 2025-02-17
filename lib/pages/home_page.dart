@@ -1,3 +1,4 @@
+import 'package:TTTMedicine/pages/pills_page.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'add_page.dart';
 import 'calender_page.dart';
 
 class HomePage extends StatefulWidget {
+  static const  String id = 'home_page';
 
   const HomePage({super.key});
 
@@ -31,8 +33,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   final List<Widget> _pages = [
     const CalenderPage(),
-    const AccountPage.AccountPage(),
-    const AddPage(),
+    const AccountPage(),
+    const PillsPage(),
   ];
 
   final iconList = <IconData>[
@@ -112,7 +114,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
         backgroundColor: AppColors.appActiveColor,
         child:  Icon(
-          Icons.add,
+          Icons.medication_rounded,
           size: 36,
           color: AppColors.white100,
         ),

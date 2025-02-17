@@ -1,7 +1,10 @@
-import 'package:TTTMedicine/services/hive_service.dart';
+import 'package:TTTMedicine/services/chat_data.dart';
 
 class RootService{
   static Future<void> init() async{
-    await HiveService.init();
+    await Future.wait([
+      ChatNoSqlService.init(),
+    ]);
+
   }
 }

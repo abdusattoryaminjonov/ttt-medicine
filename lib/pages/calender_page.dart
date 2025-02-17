@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 
 import '../constants/app_colors.dart';
+import '../services/auth_service.dart';
 import '../widgets/clip_wawe.dart';
 
 class CalenderPage extends StatefulWidget {
@@ -44,8 +46,6 @@ class _CalenderPageState extends State<CalenderPage>{
 
   @override
   Widget build(BuildContext context) {
-    // final currentWeekDates = getCurrentWeekDates(selectedDate);
-
 
     return Scaffold(
       body: Stack(
@@ -70,29 +70,42 @@ class _CalenderPageState extends State<CalenderPage>{
                       Container(
                         margin: const EdgeInsets.only(left: 10,top: 35),
                         child: ClipRRect(
-                            borderRadius: BorderRadius.circular(35),
-                            child: const Image(
-                              image: AssetImage("assets/images/myphoto.jpg"),
+                          borderRadius: BorderRadius.circular(45),
+                          child: CachedNetworkImage(
+                            height: 70,
+                            width: 70,
+                            imageUrl: AuthService.currentUser().photoURL!,
+                            placeholder: (context, url) => const Image(
+                              image: AssetImage(
+                                  "assets/images/user_icon.jpg"),
                               width: 70,
                               height: 70,
                               fit: BoxFit.cover,
-                            )
+                            ),
+                            errorWidget: (context, url, error) => const Image(
+                              image: AssetImage(
+                                  "assets/images/user_icon.jpg"),
+                              width: 70,
+                              height: 70,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                       ),
                       Expanded(
                         child: Container(
                           padding: const EdgeInsets.only(left: 20,top: 10),
                           height: 70,
-                          child: const Column(
+                          child:  Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Hi Abdusattor",style:TextStyle(
+                              Text("Hi ${AuthService.currentUser().displayName!.split(' ')[0]}",style:const TextStyle(
                                 fontFamily: 'Roboto',
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,
                               ),),
-                              Text("Today you take 3pills",style:TextStyle(
+                              const Text("Today you take ***3pills",style:TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'Roboto',
                                 color: Colors.white,
@@ -182,10 +195,10 @@ class _CalenderPageState extends State<CalenderPage>{
                                     color: AppColors.white100,
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.black.withOpacity(0.2),  // Shadow color with some opacity
-                                        spreadRadius: 2,  // Spread radius
-                                        blurRadius: 4,   // Blur radius
-                                        offset: const Offset(2, 2),  // Offset of the shadow
+                                        color: Colors.black.withOpacity(0.2),
+                                        spreadRadius: 2,
+                                        blurRadius: 4,
+                                        offset: const Offset(2, 2),
                                       ),
                                     ],
                                   ),
@@ -264,10 +277,10 @@ class _CalenderPageState extends State<CalenderPage>{
                                     color: AppColors.white100,
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.black.withOpacity(0.2),  // Shadow color with some opacity
-                                        spreadRadius: 2,  // Spread radius
-                                        blurRadius: 4,   // Blur radius
-                                        offset: const Offset(2, 2),  // Offset of the shadow
+                                        color: Colors.black.withOpacity(0.2),
+                                        spreadRadius: 2,
+                                        blurRadius: 4,
+                                        offset: const Offset(2, 2),
                                       ),
                                     ],
                                   ),
@@ -347,14 +360,14 @@ class _CalenderPageState extends State<CalenderPage>{
           Text(
             DateFormat.E().format(date), // Haftaning kuni (e.g., Mon, Tue)
             style: TextStyle(
-              color: isToday ? AppColors.white100 : AppColors.appActiveColor, // Matn rangi
+              color: isToday ? AppColors.white100 : AppColors.appActiveColor,
             ),
           ),
           const SizedBox(height: 15),
           Text(
             date.day.toString(), // Oy kunining raqami
             style: TextStyle(
-              color: isToday ? AppColors.white100 : AppColors.appActiveColor, // Matn rangi
+              color: isToday ? AppColors.white100 : AppColors.appActiveColor,
               fontWeight: isToday ? FontWeight.bold : FontWeight.normal,
             ),
           ),

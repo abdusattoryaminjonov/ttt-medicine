@@ -10,4 +10,5 @@ class AppColors{
   static Color black = const Color.fromRGBO(0, 0, 0, 1);
   static Color black50 = const Color.fromRGBO(50, 50, 50, 1);
   static Color black05 = const Color.fromRGBO(50, 50, 50, 0.5);
+  static Color purple =  Colors.deepPurpleAccent;
 }
