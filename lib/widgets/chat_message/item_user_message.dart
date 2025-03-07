@@ -10,6 +10,7 @@ Widget itemOfUserMessage(MessageModel message) {
     crossAxisAlignment: CrossAxisAlignment.end,
     children: [
       Container(
+        margin: EdgeInsets.only(top: 10),
         constraints: const BoxConstraints(maxWidth: 300),
         padding:
         const EdgeInsets.only(top: 10, bottom: 10, left: 16, right: 16),

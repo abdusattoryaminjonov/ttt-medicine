@@ -64,6 +64,9 @@ dependencies:
   # file
   image_picker: ^1.1.1
 
+  # alarm clock
+#  android_alarm_manager_plus: ^4.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

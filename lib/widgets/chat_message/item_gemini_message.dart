@@ -52,6 +52,7 @@ Widget itemOfGeminiMessage(MessageModel message,ChatController controller,BuildC
               margin: const EdgeInsets.only(top: 15),
               child: ParsedText(
                 text:message.message!,
+                // text: "Bolnol — bu og'riq qoldiruvchi va yallig'lanishga qarshi dori vositasi bo'lib, turli shakllarda mavjud: tabletkalar, suspenziya, gel va in'ektsiya uchun eritma. Uning tarkibida faol modda sifatida parasetamol, diklofenak natriy, ibuprofen kabi komponentlar mavjud bo'lib, ular og'riqni kamaytirish, yallig'lanishni pasaytirish va isitmani tushirish xususiyatlariga ega.",
                 style:  TextStyle(
                   fontSize: 16,
                   color: AppColors.white100,

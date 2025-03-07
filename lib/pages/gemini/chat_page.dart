@@ -65,11 +65,12 @@ class _ChatPageState extends State<ChatPage> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
+          backgroundColor: AppColors.appActiveColor,
           title: Text("TTT-Chat",style: TextStyle(
-            color: AppColors.appActiveColor,
+            color: AppColors.white100,
           ),),
             leading:IconButton(
-              icon: Icon(Icons.arrow_back_outlined,color: AppColors.appActiveColor),
+              icon: Icon(Icons.arrow_back_outlined,color: AppColors.white100),
               onPressed: (){
                 controller.goToAccountPage();
               },
@@ -105,7 +106,7 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(right: 20, left: 20),
+                  margin: const EdgeInsets.only(right: 20, left: 20,),
                   padding: const EdgeInsets.only(left: 20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),

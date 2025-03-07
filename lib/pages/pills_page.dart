@@ -1,5 +1,6 @@
 import 'package:TTTMedicine/controllers/pills_controller.dart';
 import 'package:TTTMedicine/models/pill_sql_model.dart';
+import 'package:TTTMedicine/services/sql_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -51,8 +52,25 @@ class _PillsPageState extends State<PillsPage> {
                         Stack(
                           children: [
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
+                                IconButton(
+                                  onPressed: (){
+                                    controller.loadPills();
+                                  },
+                                  icon: Container(
+                                    decoration: BoxDecoration(
+                                      color: AppColors.white100,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    padding: const EdgeInsets.all(8),
+                                    child: Icon(
+                                      Icons.refresh,
+                                      size: 25,
+                                      color: AppColors.appActiveColor,
+                                    ),
+                                  ),
+                                ),
                                 IconButton(
                                   onPressed: (){
                                     controller.callAddPage();
@@ -65,11 +83,11 @@ class _PillsPageState extends State<PillsPage> {
                                     padding: const EdgeInsets.all(8),
                                     child: Icon(
                                       Icons.add,
-                                      size: 30,
+                                      size: 25,
                                       color: AppColors.appActiveColor,
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                             Center(
@@ -141,24 +159,59 @@ class _PillsPageState extends State<PillsPage> {
     }));
   }
 
+
   Widget _itemSqlPillList(SqlPill sqlPill) {
     return GestureDetector(
-      onLongPress: () {
-        // print(typeDatabase);
+      onTap: () {
+        controller.showPillDetailsDialog(context, sqlPill);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
-        padding: const EdgeInsets.all(5),
-        height: 80,
+        height: 100,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.grey.shade200,
+          color: AppColors.blueWhite,
         ),
-        child: Row(
-          children: [
-            Text('${sqlPill.name}'),
-          ],
+        child:  Padding(
+          padding: const EdgeInsets.only(left: 20,right: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                   Text("${sqlPill.name}",style: const TextStyle(
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.edit,color: AppColors.green,),
+                        onPressed: (){},
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.delete,color: AppColors.red,),
+                        onPressed: (){
+                          SqlPillDatabase.deletePill(sqlPill.id!.toInt());
+                          controller.loadPills();
+                        },
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              Text("Dori ${sqlPill.consumptionDay} kunlik qoldi",style: const TextStyle(
+                fontFamily: 'Roboto',
+                fontSize: 18,
+              ),),
+
+            ],
+          ),
         ),
       ),
     );

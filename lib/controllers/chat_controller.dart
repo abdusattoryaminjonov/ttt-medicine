@@ -88,16 +88,6 @@ class ChatController extends GetxController{
     onRemovedImage();
   }
 
-  // Future gotoIntranetPage(String url ,BuildContext context) async{
-  //   await Navigator.of(context).push(
-  //     MaterialPageRoute(
-  //       builder: (BuildContext context) {
-  //         return  IntranetPage(url: url,);
-  //       },
-  //     ),
-  //   );
-  // }
-
   onSelectedImage() async {
     var base64 = await Utils.pickAndConvertImage();
     if (base64.trim().isNotEmpty) {

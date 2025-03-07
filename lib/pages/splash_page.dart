@@ -133,7 +133,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                       color: AppColors.black05,
                     ),
                     onTap: () {
-                      Navigator.pushReplacementNamed(context, 'home_page');
+                      Navigator.pushReplacementNamed(context, 'register_page');
                     },
                   ),
                 ),

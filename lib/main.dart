@@ -1,23 +1,28 @@
 import 'package:TTTMedicine/config/root_binding.dart';
 import 'package:TTTMedicine/pages/account_page.dart';
 import 'package:TTTMedicine/pages/add_page.dart';
+import 'package:TTTMedicine/pages/alarm/note_page.dart';
 import 'package:TTTMedicine/pages/gemini/chat_page.dart';
 import 'package:TTTMedicine/pages/home_page.dart';
 import 'package:TTTMedicine/pages/pills_page.dart';
 import 'package:TTTMedicine/pages/register_page.dart';
 import 'package:TTTMedicine/pages/splash_page.dart';
 import 'package:TTTMedicine/services/root_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:timezone/data/latest_all.dart' as tz;
 
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
 
-void main() {
+void main()async{
   WidgetsFlutterBinding.ensureInitialized();
+  tz.initializeTimeZones();
+  // await AndroidAlarmManager.initialize();
   flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
       AndroidFlutterLocalNotificationsPlugin>()!
@@ -35,12 +40,18 @@ void main() {
           projectId: 'medicine-b7dbe',
         )
     );
-    runApp(const MyApp());
+
+    User? user = FirebaseAuth.instance.currentUser;
+    bool isLoggedIn = (user != null);
+
+    runApp(MyApp(isLoggedIn: isLoggedIn));
   });
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool isLoggedIn;
+
+  const MyApp({super.key, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +62,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashPage(),
+      home: isLoggedIn ? const HomePage() : const SplashPage(),
+      // home: NotePage(),
       initialBinding: RootBinding(),
       routes: {
         ChatPage.id :(context) => const ChatPage(),

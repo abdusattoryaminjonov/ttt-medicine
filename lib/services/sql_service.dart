@@ -31,6 +31,7 @@ class SqlPillDatabase {
         totalNumber TEXT,
         dayNumber TEXT,
         startDate TEXT,
+        consumptionDay TEXT,
         dayTime TEXT,
         dayOfWeekAndTime TEXT
       )

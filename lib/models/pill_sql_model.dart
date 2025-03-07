@@ -6,6 +6,7 @@ class SqlPill {
   String? totalNumber;
   String? dayNumber;
   String? startDate;
+  String? consumptionDay;
   String? dayTime;
   Map<String, String>? dayOfWeekAndTime;
 
@@ -15,6 +16,7 @@ class SqlPill {
     this.totalNumber,
     this.dayNumber,
     this.startDate,
+    this.consumptionDay,
     this.dayTime,
     this.dayOfWeekAndTime,
   });
@@ -26,6 +28,7 @@ class SqlPill {
       'totalNumber': totalNumber,
       'dayNumber': dayNumber,
       'startDate': startDate,
+      'consumptionDay':consumptionDay,
       'dayTime': dayTime,
       'dayOfWeekAndTime': jsonEncode(dayOfWeekAndTime),
     };
@@ -38,6 +41,7 @@ class SqlPill {
       totalNumber: map['totalNumber'],
       dayNumber: map['dayNumber'],
       startDate: map['startDate'],
+      consumptionDay:map['consumptionDay'],
       dayTime: map['dayTime'],
       dayOfWeekAndTime: map['dayOfWeekAndTime'] != null
           ? Map<String, String>.from(jsonDecode(map['dayOfWeekAndTime']))
